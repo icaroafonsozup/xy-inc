@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository
 
 interface PointOfInterestRepository : MongoRepository<PointOfInterest, Long> {
 
-    fun findByxCoordinateAndyCoordinate(x: Int, y: Int): PointOfInterest?
+    fun findByxCoordinateAndYCoordinate(x: Int, y: Int): PointOfInterest?
 
     fun findByName(name: String): PointOfInterest?
 }

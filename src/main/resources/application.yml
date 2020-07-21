@@ -1,0 +1,14 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /xy-inc
+
+spring:
+  profiles:
+    active: default
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/xyinc
+
+
+

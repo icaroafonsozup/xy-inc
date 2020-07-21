@@ -1,15 +1,14 @@
-package br.com.zup.xyinc.data.documents
+package br.com.zup.xyinc.domain.dtos
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.Document
 
-@Document
-data class PointOfInterest(
+@JsonInclude(JsonInclude.Include.NON_NULL)
+data class PointOfInterestResponse(
         @get:JsonProperty(value = "xCoordinate")
         val xCoordinate: Int,
         @get:JsonProperty(value = "yCoordinate")
         val yCoordinate: Int,
         val name: String,
-        @Id val id: String? = null
+        val id: String? = null
 )
