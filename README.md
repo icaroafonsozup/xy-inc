@@ -1,1 +1,2 @@
-# xy-inc
+# XY Inc. 
+
