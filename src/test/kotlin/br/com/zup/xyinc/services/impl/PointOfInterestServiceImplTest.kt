@@ -4,17 +4,15 @@ package br.com.zup.xyinc.services.impl
 import br.com.zup.xyinc.data.documents.PointOfInterest
 import br.com.zup.xyinc.data.repositories.PointOfInterestRepository
 import br.com.zup.xyinc.services.PointOfInterestService
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.test.context.junit4.SpringRunner
 
-@RunWith(SpringRunner::class)
+
 @SpringBootTest
 internal class PointOfInterestServiceImplTest {
 
@@ -30,7 +28,7 @@ internal class PointOfInterestServiceImplTest {
 
     private val yCoordinate = 10
 
-    @Before
+    @BeforeEach
     @Throws(Exception::class)
     fun setUp() {
         BDDMockito.given(poiRepository?.findByName(name)).willReturn(pointOfInterest())
@@ -43,57 +41,57 @@ internal class PointOfInterestServiceImplTest {
     @Test
     fun findAll() {
         val poiList: List<PointOfInterest>? = poiService?.findAll()
-        Assert.assertNotNull(poiList)
-        Assert.assertEquals(7, poiList?.size)
+        Assertions.assertNotNull(poiList)
+        Assertions.assertEquals(7, poiList?.size)
     }
 
     @Test
     fun findByCoordinates() {
         val poi: PointOfInterest? = poiService?.findByCoordinates(xCoordinate, yCoordinate)
-        Assert.assertNotNull(poi)
-        Assert.assertEquals(xCoordinate, poi?.xCoordinate)
-        Assert.assertEquals(yCoordinate, poi?.yCoordinate)
-        Assert.assertEquals(name, poi?.name)
+        Assertions.assertNotNull(poi)
+        Assertions.assertEquals(xCoordinate, poi?.xCoordinate)
+        Assertions.assertEquals(yCoordinate, poi?.yCoordinate)
+        Assertions.assertEquals(name, poi?.name)
     }
 
     @Test
     fun findByName() {
         val poi: PointOfInterest? = poiService?.findByName(name)
-        Assert.assertNotNull(poi)
-        Assert.assertEquals(xCoordinate, poi?.xCoordinate)
-        Assert.assertEquals(yCoordinate, poi?.yCoordinate)
-        Assert.assertEquals(name, poi?.name)
+        Assertions.assertNotNull(poi)
+        Assertions.assertEquals(xCoordinate, poi?.xCoordinate)
+        Assertions.assertEquals(yCoordinate, poi?.yCoordinate)
+        Assertions.assertEquals(name, poi?.name)
     }
 
     @Test
     fun insert() {
         val poi: PointOfInterest? = poiService?.insert(pointOfInterest())
-        Assert.assertNotNull(poi)
-        Assert.assertEquals(xCoordinate, poi?.xCoordinate)
-        Assert.assertEquals(yCoordinate, poi?.yCoordinate)
-        Assert.assertEquals(name, poi?.name)
+        Assertions.assertNotNull(poi)
+        Assertions.assertEquals(xCoordinate, poi?.xCoordinate)
+        Assertions.assertEquals(yCoordinate, poi?.yCoordinate)
+        Assertions.assertEquals(name, poi?.name)
 
     }
 
     @Test
     fun findNearestOnes10Mts() {
         val poi: List<PointOfInterest>? = poiService?.findNearestOnes(xCoordinate, yCoordinate, 10)
-        Assert.assertNotNull(poi)
-        Assert.assertEquals(poi?.size, 4)
+        Assertions.assertNotNull(poi)
+        Assertions.assertEquals(poi?.size, 4)
         val lanchonete = poi?.stream()?.filter { it.name == "Lanchonete" }?.findAny()?.orElse(null)
-        Assert.assertNotNull(lanchonete)
+        Assertions.assertNotNull(lanchonete)
         val joalheria = poi?.stream()?.filter { it.name == "Joalheria" }?.findAny()?.orElse(null)
-        Assert.assertNotNull(joalheria)
+        Assertions.assertNotNull(joalheria)
         val pub = poi?.stream()?.filter { it.name == "Pub" }?.findAny()?.orElse(null)
-        Assert.assertNotNull(pub)
+        Assertions.assertNotNull(pub)
         val supermercado = poi?.stream()?.filter { it.name == "Supermercado" }?.findAny()?.orElse(null)
-        Assert.assertNotNull(supermercado)
+        Assertions.assertNotNull(supermercado)
         val posto = poi?.stream()?.filter { it.name == "Posto" }?.findAny()?.orElse(null)
-        Assert.assertNull(posto)
+        Assertions.assertNull(posto)
         val floricultura = poi?.stream()?.filter { it.name == "Floricultura" }?.findAny()?.orElse(null)
-        Assert.assertNull(floricultura)
+        Assertions.assertNull(floricultura)
         val churrascaria = poi?.stream()?.filter { it.name == "Churrascaria" }?.findAny()?.orElse(null)
-        Assert.assertNull(churrascaria)
+        Assertions.assertNull(churrascaria)
     }
 
 
