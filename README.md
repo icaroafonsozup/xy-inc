@@ -11,7 +11,7 @@ This is the way to execute this project in local machine. Prerequisites:
 
 With a MongoDB service running, execute "mvn package" command to build the application into the "target" folder.
 
-Into the folder where you generatad the jar file, execute "java -jar xy-inc-0.0.1-SNAPSHOT.jar"
+Into the folder where you generated the jar file, execute "java -jar xy-inc-0.0.1-SNAPSHOT.jar"
 
 
 #### Steps to test
@@ -22,7 +22,7 @@ To run Unit tests, execute this command:
 
 ##### Docker
 
-If you prefer, you can use docker to run this app. Execute the command bellow to get the images, and start. 
+If you prefer, you can use docker to run this app. In the root path of this project, execute the command bellow to get the images, and start. 
 
     docker-compose up
    
